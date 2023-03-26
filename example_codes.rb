@@ -60,3 +60,28 @@ $var = 'I am also available throughout your app.'  #example global variable decl
 @var = 'I am available throughout the current instance of this class.' #example instance variable declaration
 
 var = 'I must be passed around to cross scope boundaries.'  # example local variable declaration
+
+def say(words='hello')
+  puts words + '.'
+end
+
+say()          # this will output hello
+say("hi")
+say("how are you")
+say("I'm fine")
+
+def some_method(number)
+  number = 7 # this is implicitly returned by the method
+end
+
+a = 5
+some_method(a)
+puts a  # this will output 5
+
+def add_three(number)
+  return number + 3 # this return will just return number + 3 without executing the next line of code
+  number + 4
+end
+
+returned_value = add_three(4)
+puts returned_value
