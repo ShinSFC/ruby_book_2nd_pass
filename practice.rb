@@ -1,7 +1,5 @@
-a = 5
+foo = nil
+bar = 'qux'
+isOk = foo || bar
 
-if a 
-  puts "how can this be true?"
-else  
-  puts "it is no true"
-end
+isOk = (foo || bar) ? true : false
