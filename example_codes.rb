@@ -218,3 +218,9 @@ when a == 6
 else
   puts "a is neither 5, nor 6"
 end
+
+# loop_example.rb
+
+loop do
+  puts "This will keep printing until you hit Ctrl + c"
+end
