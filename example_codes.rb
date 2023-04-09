@@ -275,3 +275,122 @@ loop do
   break
 end
 puts x     # 2 -- the value was changed
+
+# countdown.rb
+
+x = gets.chomp.to_i
+
+while x >= 0
+  puts x
+  x -= 1 # <- refactored this line
+end
+
+puts "Done!"
+
+x = 0
+while x < 5
+  y = x * x
+  x += 1
+end
+
+puts y # 16
+
+# countdown.rb
+
+x = gets.chomp.to_i
+
+until x < 0
+  puts x
+  x -= 1
+end
+
+puts "Done!"
+
+# perform_again.rb
+
+loop do
+  puts "Do you want to do that again?"
+  answer = gets.chomp
+  if answer != 'Y'
+    break
+  end
+end
+
+# another Ruby construct
+
+begin
+  puts "Do you want to do that again?"
+  answer = gets.chomp
+end while answer == 'Y'
+
+# countdown3.rb
+
+x = gets.chomp.to_i
+
+for i in 1..x do
+  puts x - i
+end
+
+puts "Done!"
+
+# countdown4.rb
+
+x = [1, 2, 3, 4, 5]
+
+for i in x.reverse do
+  puts i
+end
+
+puts "Done!"
+
+# conditional_while_loop.rb
+
+x = 0
+
+while x <= 10
+  if x.odd?
+    puts x
+  end
+  x += 1
+end # this will output 1, 3, 5, 7, 9
+
+# conditional_while_loop_with_next.rb
+
+x = 0
+
+while x <= 10
+  if x == 3
+    x += 1
+    next # this section causes 4 to be skipped
+  elsif x.odd?
+    puts x
+  end
+  x += 1
+end # this will output 1, 5, 7, 9
+
+# conditional_while_loop_with_break.rb
+
+x = 0
+
+while x <= 10
+  if x == 7
+    break # this will stop running the code at 7
+  elsif x.odd?
+    puts x
+  end
+  x += 1
+end # this will output 1, 3, 5
+
+# practice_each.rb
+
+names = ['Bob', 'Joe', 'Steve', 'Janice', 'Susan', 'Helen']
+x = 1
+
+names.each do |name|
+  puts "#{x}. #{name}"
+  x += 1
+end # this outputs a numbered list with the names
+
+def doubler(start)
+  puts start * 2
+end
