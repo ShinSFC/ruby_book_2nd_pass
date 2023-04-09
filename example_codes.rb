@@ -121,6 +121,19 @@ end
 
 scream("Yippeee")
 
+foo = nil
+bar = 'qux'
+isOk = foo || bar # 'qux' is a truthy value
+
+isOk = (foo || bar) ? true : false # this will output true
+
+isOk
+if (foo || bar) 
+  isOk = true;
+else 
+  isOk = false;
+end
+
 # Example 1
 if x == 3
   puts "x is 3"
@@ -380,6 +393,14 @@ while x <= 10
   end
   x += 1
 end # this will output 1, 3, 5
+
+x = ""
+while x != "STOP" do
+  puts "Hi, How are you feeling?"
+  ans = gets.chomp
+  puts "Want me to ask you again?"
+  x = gets.chomp
+end
 
 # practice_each.rb
 
