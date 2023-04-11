@@ -132,7 +132,7 @@ if (foo || bar)
   isOk = true;
 else 
   isOk = false;
-end
+end # this will output true. not sure if ; is needed?
 
 # Example 1
 if x == 3

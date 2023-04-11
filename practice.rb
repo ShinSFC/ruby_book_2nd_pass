@@ -1,5 +1,3 @@
-foo = nil
-bar = 'qux'
-isOk = foo || bar
+a = [1, 2, 3]
 
-isOk = (foo || bar) ? true : false
+puts a.each { |x| puts x + 8 }
