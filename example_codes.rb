@@ -480,3 +480,17 @@ irb :004 > name_and_age.select { |k,v| k == "Bob" }
 => {"Bob"=>42}
 irb :005 > name_and_age.select { |k,v| (k == "Bob") || (v == 19) }
 => {"Bob"=>42, "Joe"=>19}
+
+family = {  uncles: ["bob", "joe", "steve"],
+            sisters: ["jane", "jill", "beth"],
+            brothers: ["frank","rob","david"],
+            aunts: ["mary","sally","susan"]
+          }
+
+immediate_family = family.select do |k, v|
+  k == :sisters || k == :brothers
+end
+
+arr = immediate_family.values.flatten
+
+p arr
