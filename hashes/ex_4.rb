@@ -1,12 +1,5 @@
-hash = { 'one': 1, 'two': 2, 'three': 3 }
+person = {name: 'Bob', occupation: 'web developer', hobbies: 'painting'}
 
-puts hash.value?(1)
+name = person[:name]
 
-# book days:
-
-if hash.value?(1)
-  puts "Got it!"
-else
-  puts "Nope!"
-end
-
+puts "Name of the person is: #{name}."
