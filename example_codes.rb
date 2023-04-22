@@ -494,3 +494,62 @@ end
 arr = immediate_family.values.flatten
 
 p arr
+
+# important differene below!
+
+x = "hi there"
+my_hash = {x: "some value"}
+my_hash2 = {x => "some value"}
+
+# my_hash uses symbol x as a key
+# my_hash2 uses variable x as a key
+
+# Regex
+
+# boolean_regex.rb
+
+def has_a_b?(string)
+  if string =~ /b/
+    puts "We have a match!"
+  else
+    puts "No match here."
+  end
+end
+
+has_a_b?("basketball") # match
+has_a_b?("football") # match
+has_a_b?("hockey") # no match
+has_a_b?("golf") # no match
+
+# Variables as pointers
+
+a = "hi there"
+b = a
+a = "not here"
+# b is pointed at "hi there" so it is never "not here"
+
+a = "hi there"
+b = a
+a << ", Bob"
+# here Bob is added to "hi there" so both a and b include Bob
+
+a = [1, 2, 3, 3]
+b = a
+c = a.uniq
+# a and b is [1, 2, 3, 3] c is [1, 2, 3]
+
+a = [1, 2, 3, 3]
+b = a
+c = a.uniq!
+# a, b and c are all [1, 2, 3]
+
+# passing_block.rb
+
+def take_block(number, &block)
+  block.call(number)
+end
+
+number = 42
+take_block(number) do |num|
+  puts "Block being called in the method! #{num}"
+end
