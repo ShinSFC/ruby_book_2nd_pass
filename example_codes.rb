@@ -545,6 +545,16 @@ c = a.uniq!
 
 # passing_block.rb
 
+def take_block(&block)
+  block.call
+end
+
+take_block do
+  puts "Block being called in the method!"
+end
+
+# passing_block_2.rb passing a block and a number as a argument
+
 def take_block(number, &block)
   block.call(number)
 end
@@ -553,3 +563,85 @@ number = 42
 take_block(number) do |num|
   puts "Block being called in the method! #{num}"
 end
+
+# proc_example.rb
+
+talk = Proc.new do
+  puts "I am talking."
+end
+
+talk.call
+
+# proc_example.rb
+
+talk = Proc.new do |name|
+  puts "I am talking to #{name}"
+end
+
+talk.call "Bob"
+
+#passing_proc.rb
+
+def take_proc(proc)
+  [1, 2, 3, 4, 5].each do |number|
+    proc.call number
+  end
+end
+
+proc = Proc.new do |number|
+  puts "#{number}. Proc being called in the method!"
+end
+
+take_proc(proc)
+
+# Exceptions and stack traces
+
+def greet(person)
+  puts "Hello, " + person
+end
+
+greet("John")
+greet(1)
+
+=begin
+$ ruby greeting.rb
+Hello, John
+greeting.rb:2:in `+': no implicit conversion of 
+Integer into String (TypeError) from               # this tells us where the error occured and why
+greeting.rb:2:in `greet'
+from greeting.rb:6:in `<main>'                     # error occured due to the call maid in the 'main' context on line 6
+
+main -> greet -> puts -> exit and return to main   # stack trace
+
+=end
+
+def space_out_letters(person)
+  return person.split("").join(" ")
+end
+
+def greet(person)
+  return "H e l l o, " + space_out_letters(person)
+end
+
+def decorate_greeting(person)
+  puts "" + greet(person) + ""
+end
+
+decorate_greeting("John")
+decorate_greeting(1)
+
+=begin
+H e l l o, J o h n
+greeting.rb:2:in `space_out_letters': undefined 
+method `split' for 1:Integer (NoMethodError)
+from greeting.rb:6:in `greet' from greeting.rb:10:in 
+`decorate_greeting'
+from greeting.rb:14:in `<main>'
+
+# stack trace
+
+main -> decorate_greeting -> greet -> 
+space_out_letters (passes result back) -> greet -> 
+decorate_greeting -> main
+
+=end
