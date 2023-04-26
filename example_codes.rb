@@ -609,7 +609,7 @@ Hello, John
 greeting.rb:2:in `+': no implicit conversion of 
 Integer into String (TypeError) from               # this tells us where the error occured and why
 greeting.rb:2:in `greet'
-from greeting.rb:6:in `<main>'                     # error occured due to the call maid in the 'main' context on line 6
+from greeting.rb:6:in `<main>'                     # error occured due to the call made in the 'main' context on line 6
 
 main -> greet -> puts -> exit and return to main   # stack trace
 
@@ -645,3 +645,20 @@ space_out_letters (passes result back) -> greet ->
 decorate_greeting -> main
 
 =end
+
+def execute(&block)
+  block
+end
+
+execute { puts "Hello from inside the execute method!" }
+# this will return a proc object
+
+# one line version
+arr.each { |number| puts number if number > 5 }
+
+# multi-line version
+arr.each do |number|
+  if number > 5
+    puts number
+  end
+end
