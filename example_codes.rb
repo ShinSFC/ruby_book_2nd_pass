@@ -329,6 +329,37 @@ loop do
   end
 end
 
+# control the loop
+
+iterations = 1
+
+loop do
+  puts "Number of iterations = #{iterations}"
+  iterations += 1
+  break if iterations > 5
+end
+# this will puts 5 times
+
+# loop on command
+
+loop do
+  puts 'Should I stop looping?'
+  answer = gets.chomp
+  break if answer == 'yes'
+  puts 'Incorrect answer. Please answer "yes".'
+end
+
+# another loop
+
+say_hello = true
+count = 0
+
+while say_hello
+  puts 'Hello!'
+  count += 1
+  say_hello = false if count == 5 # short cut here for if
+end
+
 # another Ruby construct
 
 begin
@@ -355,6 +386,14 @@ for i in x.reverse do
 end
 
 puts "Done!"
+
+# for loop
+
+friends = ['Sarah', 'John', 'Hannah', 'Dave']
+
+for friend in friends # friend is the variable for each element
+  puts "Hello, #{friend}!"
+end
 
 # conditional_while_loop.rb
 
@@ -401,6 +440,28 @@ while x != "STOP" do
   puts "Want me to ask you again?"
   x = gets.chomp
 end
+
+# another while loop
+
+numbers = []
+
+while numbers.size < 5
+  numbers << rand(100)
+end
+
+puts numbers
+# this will print 5 random numbers
+
+# until loop
+
+numbers = [7, 9, 13, 25, 18]
+count = 0
+
+until count == numbers.size
+  puts numbers[count] # count is the index
+  count += 1
+end
+# this will print all the numbers in the array
 
 # practice_each.rb
 
@@ -786,4 +847,7 @@ end
 my_value(array)
 puts a
 # this returns an error since variable a is not accessible from inside a method definition
+
+# break
+
 
