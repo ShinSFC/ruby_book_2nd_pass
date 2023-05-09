@@ -662,3 +662,128 @@ arr.each do |number|
     puts number
   end
 end
+
+# Exercise 16 challenge:
+
+contact_data = ["joe@email.com", "123 Main st.", "555-123-4567"]
+contacts = {"Joe Smith" => {}}
+fields = [:email, :address, :phone]
+
+contacts.each do |name, hash|
+  fields.each do |field|
+    hash[field] = contact_data.shift
+  end
+end
+
+contact_data = [["joe@email.com", "123 Main st.", "555-123-4567"],
+            ["sally@email.com", "404 Not Found Dr.", "123-234-3454"]]
+contacts = {"Joe Smith" => {}, "Sally Johnson" => {}}
+fields = [:email, :address, :phone]
+
+contacts.each_with_index do |(name, hash), idx|
+  fields.each do |field|
+    hash[field] = contact_data[idx].shift
+  end
+end
+
+# insert method
+
+a = %w(a b c d e)
+
+p a.insert(3, 5, 6, 7)
+# => [a, b, c, 5, 6, 7, d, e]
+
+# variable scope
+
+a = 7
+
+def my_value(b)
+  b += 10
+end
+
+my_value(a)
+puts a # a is 7 since += does not mutate the variable
+
+a = 7
+
+# variable scope
+
+def my_value(b)
+  a = b
+end
+
+my_value(a + 5)
+puts a # a is still 7 since variables inside method definitions cannot access variables initiated outside the definition
+
+# variable scope with string
+
+a = "Xyzzy"
+
+def my_value(b)
+  b[2] = '-'
+end
+
+my_value(a)
+puts a # Xy-xy because the string a points to was mutated
+
+# variable scope
+
+a = "Xyzzy"
+
+def my_value(b)
+  b = 'yzzyX'
+end
+
+my_value(a)
+puts a # "Xyzzy" since the string is not modified
+
+# variable scope
+
+a = 7
+
+def my_value(b)
+  b = a + a
+end
+
+my_value(a)
+puts a 
+# this will return an error since variable a is not visible from inside the method definition
+
+# variable scope
+
+a = 7
+array = [1, 2, 3]
+
+array.each do |element|
+  a = element
+end 
+
+puts a
+# a = 3 since its the last element to be assigned to a
+
+# variable scope
+
+array = [1, 2, 3]
+
+array.each do |element|
+  a = element
+end
+
+puts a
+# this returns an error since we can't access a inside the block
+
+# variable scope
+
+a = 7
+array = [1, 2, 3]
+
+def my_value(ary)
+  ary.each do |b|
+    a += b
+  end
+end
+
+my_value(array)
+puts a
+# this returns an error since variable a is not accessible from inside a method definition
+

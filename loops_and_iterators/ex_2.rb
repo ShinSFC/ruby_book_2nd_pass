@@ -8,6 +8,6 @@ while ""
   end
 end
 
-# just needed the "" after while to make it word
+# just needed the "" after while to make it work
 
   
