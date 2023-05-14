@@ -258,6 +258,30 @@ loop do
   end
 end
 
+# loop with next if
+
+number = 0
+
+until number == 10
+  number += 1
+  next if number.odd?
+  puts number
+end
+
+# loop with next unless
+
+number_a = 0
+number_b = 0
+
+loop do
+  number_a += rand(2)
+  number_b += rand(2)
+  next unless number_a == 5 || number_b == 5
+
+  puts '5 was reached!'
+  break
+end
+
 # next_loop.rb
 
 i = 0
@@ -272,6 +296,16 @@ loop do
   end
 end
 
+# loop with 
+
+choice = nil
+loop do
+  puts '>> Do you want me to print something? (y/n)'
+  choice = gets.chomp.downcase
+  break if %w(y n).include?(choice)
+  puts '>> Invalid input! Please enter y or n'
+end
+puts 'something' if choice == 'y'
 
 # variable scope in loops:
 
@@ -288,6 +322,78 @@ loop do
   break
 end
 puts x     # 2 -- the value was changed
+
+count = 1
+
+# another loop
+
+loop do
+  if count.even?
+    puts "#{count} is even!"
+  else
+    puts "#{count} is odd!"
+  end
+
+  break if count == 5
+  count += 1
+end
+
+# another way to do above loop 
+
+count = 1
+
+loop do
+  puts count.to_s + (count%2 == 0 ? " is even!" : " is odd!")
+  count += 1
+  break if count > 5
+end
+# uses ternary
+
+# loop with between?
+
+loop do
+  number = rand(100)
+  puts number
+
+  if number.between?(0, 10) # also (0.10).include? number will work
+    break
+  end
+end
+
+# loop inside an if statement
+
+process_the_loop = [true, false].sample
+
+if process_the_loop
+  loop do
+    puts "The loop was processed!"
+    break
+  end
+else
+  puts "The loop wasn't processed!"
+end
+
+# another loop using size method to break
+
+numbers = []
+
+loop do
+  puts 'Enter any number:'
+  input = gets.chomp.to_i
+
+  numbers.push(input)
+  break if numbers.size == 5
+end
+puts numbers
+
+# loop breaks using empty?
+
+names = ['Sally', 'Joe', 'Lisa', 'Henry']
+
+loop do
+  puts names.shift
+  break if names.empty? # also names.size == 0
+end
 
 # countdown.rb
 
