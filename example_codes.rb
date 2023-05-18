@@ -296,9 +296,9 @@ loop do
   end
 end
 
-# loop with 
+# loop with %w() choice
 
-choice = nil
+choice = nil # it seems to work if nil is replaced with ''
 loop do
   puts '>> Do you want me to print something? (y/n)'
   choice = gets.chomp.downcase
@@ -306,6 +306,21 @@ loop do
   puts '>> Invalid input! Please enter y or n'
 end
 puts 'something' if choice == 'y'
+
+loop with 
+
+number_of_lines = nil
+loop do
+  puts '>> How many output lines do you want? Enter a number >= 3:'
+  number_of_lines = gets.to_i
+  break if number_of_lines >= 3
+  puts ">> That's not enough lines."
+end
+
+while number_of_lines > 0
+  puts 'Launch School is the best!'
+  number_of_lines -= 1
+end
 
 # variable scope in loops:
 
